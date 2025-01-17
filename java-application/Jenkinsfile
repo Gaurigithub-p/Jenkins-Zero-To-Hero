@@ -2,7 +2,7 @@ pipeline {
     agent any  // Runs the pipeline on any available agent
 
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk'  // Specify your Java version or path
+        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64/bin/java'  // Specify your Java version or path
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
 
