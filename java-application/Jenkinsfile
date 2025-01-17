@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Gaurigithub-p/Jenkins-Zero-To-Hero.git'
+                echo 'Repository already checked out in Declarative: Checkout SCM.'
             }
         }
 
@@ -17,15 +17,12 @@ pipeline {
             steps {
                 sh 'ls -R' // Debug: List workspace contents
                 sh 'javac HelloWorld.java' // Update path if necessary
-                }
             }
         }
 
         stage('Run') {
             steps {
-                script {
-                    sh 'java HelloWorld'
-                }
+                sh 'java HelloWorld'
             }
         }
 
@@ -48,4 +45,3 @@ pipeline {
         }
     }
 }
-
