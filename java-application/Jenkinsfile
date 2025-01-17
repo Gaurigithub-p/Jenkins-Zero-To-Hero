@@ -1,23 +1,21 @@
 pipeline {
-    agent any  // Runs the pipeline on any available agent
+    agent any
 
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64/bin/java'  // Specify your Java version or path
+        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64'
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Check out the source code from your repository
-                git 'https://github.com/Gaurigithub-p/Jenkins-Zero-To-Hero.git'
+                git branch: 'main', url: 'https://github.com/Gaurigithub-p/Jenkins-Zero-To-Hero.git'
             }
         }
 
         stage('Compile') {
             steps {
                 script {
-                    // Compile the Java program using javac
                     sh 'javac HelloWorld.java'
                 }
             }
@@ -26,7 +24,6 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    // Run the compiled Java program
                     sh 'java HelloWorld'
                 }
             }
@@ -34,14 +31,12 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Optionally, you can add some testing here if you have tests
                 echo 'Add your test steps here if needed.'
             }
         }
 
         stage('Clean Up') {
             steps {
-                // Clean up any generated files (optional)
                 sh 'rm -f HelloWorld.class'
             }
         }
@@ -49,7 +44,7 @@ pipeline {
 
     post {
         always {
-            echo 'This will always run, even if the pipeline fails'
+            echo 'Pipeline execution complete.'
         }
     }
 }
