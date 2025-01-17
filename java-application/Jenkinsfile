@@ -15,8 +15,8 @@ pipeline {
 
         stage('Compile') {
             steps {
-                script {
-                    sh 'javac HelloWorld.java'
+                sh 'ls -R' // Debug: List workspace contents
+                sh 'javac HelloWorld.java' // Update path if necessary
                 }
             }
         }
